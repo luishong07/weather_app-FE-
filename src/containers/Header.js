@@ -4,7 +4,9 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <h1 className="text-center">Fucking Weather App</h1>
+        <div className="ui segment inverted olive bot-army">
+          <h1>Fucking Weather App</h1>
+        </div>
       </header>
     );
   }
