@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 
-class LogIn extends Component {
+export default class LogIn extends Component {
   state = {
     username: "",
+    hometown_city: "",
+    hometown_country: "",
+    email: "",
     password: ""
+
   };
 
   onChange = e => {
@@ -14,7 +18,7 @@ class LogIn extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-    fetch("http://localhost:3001/login", {
+    fetch("http://localhost:3001/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -55,4 +59,3 @@ class LogIn extends Component {
     );
   }
 }
-export default LogIn;
