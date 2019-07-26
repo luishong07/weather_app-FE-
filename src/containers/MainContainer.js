@@ -10,16 +10,25 @@ class MainContainer extends Component {
     fiveDayWeather: [],
     fiveDayWeatherParsed: [],
     currentWeather: [],
-    hourlyWeather: []
+    hourlyWeather: [],
+    date: ""
   };
+
+  getDate() {
+    let date = { currentTime: new Date().toISOString().split("T")[0] };
+    this.setState({
+      date: date
+    });
+  }
 
   mainDiv = {
     display: "flex"
   };
 
   componentDidMount() {
+    this.getDate();
     fetch(
-      "https://newsapi.org/v2/everything?q=bitcoin&from=2019-06-26&sortBy=publishedAt&apiKey=68c14f4e25554369bb88760265178c2d"
+      `https://newsapi.org/v2/everything?q=bitcoin&from={this.state.date}&sortBy=publishedAt&apiKey=68c14f4e25554369bb88760265178c2d`
     )
       .then(res => res.json())
       .then(result => {
