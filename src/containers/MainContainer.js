@@ -32,7 +32,7 @@ class MainContainer extends Component {
     )
       .then(res => res.json())
       .then(result => {
-        console.log(result.articles);
+        // console.log(result.articles);
         this.setState({ NewsArr: result.articles });
       });
       this.getFiveDayWeather()
@@ -86,6 +86,8 @@ class MainContainer extends Component {
 
   
   render() {
+    // console.log(this.state.Weather);
+    
     return (
       <div>
         <div style={this.searchCont}>
@@ -97,12 +99,13 @@ class MainContainer extends Component {
             <NewsCollection news={this.state.NewsArr} />
           </div>
           <div>
-            <WeatherCollection />
+            <WeatherCollection weather={this.state.Weather}/>
           </div>
         </div>
       </div>
     );
   }
 }
+
 
 export default MainContainer;
