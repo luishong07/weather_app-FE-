@@ -11,6 +11,7 @@ class NewsCollection extends Component {
             title={articles.title}
             description={articles.description}
             author={articles.author}
+            image={articles.urlToImage}
           />
         ))}
       </div>
