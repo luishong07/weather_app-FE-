@@ -51,7 +51,7 @@ class MainContainer extends Component {
       .then( resp => resp.json() )
         .then( weather => {
           this.setState({
-            fiveDayWeather: weather.list
+            fiveDayWeather: weather
           })
         })
   }
@@ -78,9 +78,14 @@ class MainContainer extends Component {
         })
   }
   
+  // When a weather card is clicked it changes the weatherDetailDate state and renders the weatherDetailCardComponent
   handleClick = (day) => {
     this.setState({weatherDetailDate: day})
-    console.log(day)
+  }
+
+  // When the weather detail card is clicked it changes the weatherDetailDate state and renders the weatherCollection
+  handleClick2 = () => {
+    this.setState({weatherDetailDate: null})
   }
 
 
@@ -100,7 +105,7 @@ class MainContainer extends Component {
           </div>
           <div>
           {this.state.weatherDetailDate ?
-          <WeatherDetailCard dayWeather={this.state.fiveDayWeather} weatherDetailDate={this.state.weatherDetailDate} />:
+          <WeatherDetailCard key ={this.state.weatherDetailDate} dayWeather={this.state.fiveDayWeather} weatherDetailDate={this.state.weatherDetailDate} onClick={this.handleClick2} />:
           <WeatherCollection weather={this.state.fiveDayWeatherParsed} onClick={this.handleClick} />
           }
           </div>
