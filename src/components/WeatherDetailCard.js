@@ -20,7 +20,7 @@ export default class WeatherDetailCard extends React.Component {
 
             <div key= {this.props.weatherDetailDate} style={this.style} onClick={this.props.onClick}>
                 <Container fluid>
-                <Header as='h2'>{this.props.dayWeather.city.name} Weather on {this.props.weatherDetailDate} </Header>
+                <Header as='h1'>{this.props.dayWeather.city.name} Weather on {this.props.weatherDetailDate} </Header>
                 <Table responsive >
                     <thead>
                         
@@ -45,7 +45,6 @@ export default class WeatherDetailCard extends React.Component {
 
                     </tbody>
                     </Table>
-                
                 </Container>
             </div>
         );
