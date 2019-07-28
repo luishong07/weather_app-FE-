@@ -1,11 +1,15 @@
 import React from 'react'
 import { Container, Header } from 'semantic-ui-react'
 import Table from 'react-bootstrap/Table'
+import Chart from './Chart'
 
 export default class WeatherDetailCard extends React.Component {
     
     style = {
-        margin: "10px"
+        margin: "10px",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "gray"
     }
 
     render() {
@@ -45,6 +49,10 @@ export default class WeatherDetailCard extends React.Component {
 
                     </tbody>
                     </Table>
+                    <div style={{ position: "relative center", width: 1000, height: "auto", margin: "auto" }}>
+                        <Chart weather={allDayWeather} />
+                    </div>
+                    
                 </Container>
             </div>
         );

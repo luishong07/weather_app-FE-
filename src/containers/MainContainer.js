@@ -103,7 +103,7 @@ class MainContainer extends Component {
           <div>
             <NewsCollection news={this.state.NewsArr} />
           </div>
-          <div>
+          <div style={{ position: "relative", width: 1200, height: "auto" }} >
           {this.state.weatherDetailDate ?
           <WeatherDetailCard key ={this.state.weatherDetailDate} dayWeather={this.state.fiveDayWeather} weatherDetailDate={this.state.weatherDetailDate} onClick={this.handleClick2} />:
           <WeatherCollection weather={this.state.fiveDayWeatherParsed} onClick={this.handleClick} />

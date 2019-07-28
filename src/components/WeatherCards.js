@@ -5,8 +5,8 @@ class WeatherCards extends Component {
   style = {
     margin: "5px",
     padding: "4px",
-    borderStyle: "dotted",
-    borderWidth: "2px",
+    borderStyle: "solid",
+    borderWidth: "1px",
     borderColor: "gray",
     width: "200px",
     height:"auto"
