@@ -3,12 +3,17 @@ import React, { Component } from "react";
 import NewsCards from "../components/NewsCards";
 
 class NewsCollection extends Component {
+
+  style= {
+    margin: "10px"
+  }
+
   render() {
     return (
-      <div>
+      <div style={this.style}>
         {this.props.news.map(article => (
           <NewsCards
-            key={article.id}
+            key={this.props.news.indexOf(article)}
             title={article.title}
             description={article.description}
             author={article.author}

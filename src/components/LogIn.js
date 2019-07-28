@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 
 class LogIn extends Component {
+  
+  
+  loginStyle = {
+    textAlign: "left",
+    margin: "10px"
+  }
+
   state = {
     username: "",
     password: ""
@@ -33,7 +40,7 @@ class LogIn extends Component {
 
   render() {
     return (
-      <div>
+      <div style={this.loginStyle} >
         <form onSubmit={this.onSubmit} >
           <label>Username: </label>
           <input

@@ -6,13 +6,18 @@ import LogIn from "../components/LogIn";
 import WeatherDetailCard from '../components/WeatherDetailCard';
 
 class MainContainer extends Component {
+  
+  // spanStyle = {
+  //   display: "inline-block"
+  // }
+  
   state = {
     NewsArr: [],
     fiveDayWeather: [],
     fiveDayWeatherParsed: [],
     currentWeather: [],
     date: "",
-    weatherDetail: false
+    weatherDetailDate: null,
   };
 
   getDate() {
@@ -72,6 +77,11 @@ class MainContainer extends Component {
           })
         })
   }
+  
+  handleClick = (day) => {
+    this.setState({weatherDetailDate: day})
+    console.log(day)
+  }
 
 
   
@@ -79,18 +89,19 @@ class MainContainer extends Component {
     
     return (
       <div>
-        <div style={this.searchCont}>
-          <NewsSearch />
+        <div>
           <LogIn />
+          <NewsSearch />
+          
         </div>
         <div style={this.mainDiv}>
           <div>
             <NewsCollection news={this.state.NewsArr} />
           </div>
           <div>
-          {this.state.weatherDetail ?
-          <WeatherDetailCard dayWeather={this.state.fiveDayWeather} />:
-          <WeatherCollection weather={this.state.Weather}/>
+          {this.state.weatherDetailDate ?
+          <WeatherDetailCard dayWeather={this.state.fiveDayWeather} weatherDetailDate={this.state.weatherDetailDate} />:
+          <WeatherCollection weather={this.state.fiveDayWeatherParsed} onClick={this.handleClick} />
           }
           </div>
         </div>

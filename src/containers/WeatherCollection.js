@@ -3,33 +3,30 @@ import WeatherCards from "../components/WeatherCards";
 
 class WeatherCollection extends Component {
 
+  style = {
+    display: "flex",
+    flexWrap: "wrap",
+    margin: "5px"
+  }
+
   render() {
     if(!this.props.weather){
       return null
     }
 
-    let weatherTest = this.props.weather
-
-    console.log(this.props.weather)
-    let daysShow = weatherTest.list.filter(w => { 
-      //  console.log(weatherTest.list.indexOf(w))
-       if(weatherTest.list.indexOf(w)===0 || weatherTest.list.indexOf(w)===10 || weatherTest.list.indexOf(w)===20 || weatherTest.list.indexOf(w)===30 || weatherTest.list.indexOf(w)===39 ){
-        return w
-       }
-       else{
-         return null
-       }
-      })
-      console.log(daysShow)
+    let fiveDayWeather = this.props.weather
 
     return (
-      <div className="ui container">
-        {daysShow.map(day =>{
-         return <WeatherCards day ={day}/>
-        })}
-        
-        
-        
+      <div>
+        <div>
+          <h1>5 Day Weather Forecast</h1>
+        </div>
+        <div className="ui container" style ={this.style} >
+          {fiveDayWeather.map(day =>{
+          return <WeatherCards key = {day.dt_txt} day ={day} onClick={this.props.onClick} />
+          })}
+    
+        </div>
       </div>
     );
   }
