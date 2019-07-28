@@ -6,12 +6,13 @@ class NewsCollection extends Component {
   render() {
     return (
       <div>
-        {this.props.news.map(articles => (
+        {this.props.news.map(article => (
           <NewsCards
-            title={articles.title}
-            description={articles.description}
-            author={articles.author}
-            image={articles.urlToImage}
+            key={article.id}
+            title={article.title}
+            description={article.description}
+            author={article.author}
+            image={article.urlToImage}
           />
         ))}
       </div>

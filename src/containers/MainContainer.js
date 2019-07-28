@@ -3,6 +3,7 @@ import NewsCollection from "./NewsCollection";
 import WeatherCollection from "./WeatherCollection";
 import NewsSearch from "../components/NewsSearch";
 import LogIn from "../components/LogIn";
+import WeatherDetailCard from '../components/WeatherDetailCard';
 
 class MainContainer extends Component {
   state = {
@@ -10,8 +11,8 @@ class MainContainer extends Component {
     fiveDayWeather: [],
     fiveDayWeatherParsed: [],
     currentWeather: [],
-    hourlyWeather: [],
-    date: ""
+    date: "",
+    weatherDetail: false
   };
 
   getDate() {
@@ -38,7 +39,6 @@ class MainContainer extends Component {
       this.getFiveDayWeather()
       this.getFiveDayParsed()
       this.getCurrentWeather()
-      this.getHourlyWeather()
   }
 
   getFiveDayWeather = () => {
@@ -73,20 +73,9 @@ class MainContainer extends Component {
         })
   }
 
-  getHourlyWeather = () => {
-    fetch("https://api.openweathermap.org/data/2.5/forecast/hourly?zip=77009,us&APPID=1178c91249e1986e193e0c736d80df29")
-      .then( resp => resp.json() )
-        .then( weather => {
-          
-          this.setState({
-            hourlyWeather: weather
-          })
-        })
-  }
 
   
   render() {
-    // console.log(this.state.Weather);
     
     return (
       <div>
@@ -99,7 +88,10 @@ class MainContainer extends Component {
             <NewsCollection news={this.state.NewsArr} />
           </div>
           <div>
-            <WeatherCollection weather={this.state.Weather}/>
+          {this.state.weatherDetail ?
+          <WeatherDetailCard dayWeather={this.state.fiveDayWeather} />:
+          <WeatherCollection weather={this.state.Weather}/>
+          }
           </div>
         </div>
       </div>

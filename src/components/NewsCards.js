@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class NewsCard extends Component {
   render() {
     return (
-      <div class="ui card">
+      <div className="ui card">
         <div className="content">
           <div className="header">{this.props.title}</div>
         </div>
