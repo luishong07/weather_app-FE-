@@ -20,9 +20,13 @@ class WeatherCollection extends Component {
 
     return (
       <div>
-        <h1>Current Weather</h1>
         <div>
+          <h1>Current Weather</h1>
+        </div>
+        <div className="ui container" style ={this.style} >
           <CurrentCard current={this.props.current} />
+        </div>
+        <div>
           <h1>5 Day Weather Forecast</h1>
         </div>
         <div className="ui container" style ={this.style} >
