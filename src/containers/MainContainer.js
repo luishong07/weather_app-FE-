@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import NewsCollection from "./NewsCollection";
 import WeatherCollection from "./WeatherCollection";
 import NewsSearch from "../components/NewsSearch";
-import LogIn from "../components/LogIn";
+
 import WeatherDetailCard from '../components/WeatherDetailCard';
-import SignUp from '../components/SignUp';
+
 
 
 class MainContainer extends Component {
@@ -103,9 +103,7 @@ class MainContainer extends Component {
     return (
       <div>
         <div className ='row'>
-          <div style={{ position: "relative center", width: 600, height: "auto", margin: "10px" }}>
-            <LogIn />
-          </div>
+          
           <div style={{ position: "relative center", width: 600, height: "auto", margin: "auto" }}>
             <NewsSearch />
           </div>
