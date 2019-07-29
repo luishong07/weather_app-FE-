@@ -36,12 +36,22 @@ export default class Chart extends React.Component {
 
 	render() {
 
+		let data = {
+			labels: this.props.weather.map( weather => new Date(weather.dt_txt+"Z").toLocaleTimeString()),
+			datasets: [
+				{
+					label: "Temperature",
+					backgroundColor: "blue",
+					data: this.props.temps
+				}
+			]
+		}
 
 		return (
 			<div className="chart">
 				<Line 
 					options={{}}
-					data={this.state.data}
+					data={data}
 
 				/>
 			</div>
