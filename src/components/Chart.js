@@ -4,6 +4,7 @@ import { Line } from 'react-chartjs-2'
 
 export default class Chart extends React.Component {
 
+
 	state = {
 		data: {
 			labels: this.props.weather.map( weather => new Date(weather.dt_txt+"Z").toLocaleTimeString()),
@@ -11,13 +12,30 @@ export default class Chart extends React.Component {
 				{
 					label: "Temperature",
 					backgroundColor: "blue",
-					data: this.props.weather.map( weather => Math.round((weather.main.temp-273.15)*9/5+32))
+					data: this.props.temps
 				}
 			]
 		}
 	}
 
+	componentWillReceiveProps () {
+		this.setState({
+			data: {
+				labels: this.props.weather.map( weather => new Date(weather.dt_txt+"Z").toLocaleTimeString()),
+				datasets: [
+					{
+						label: "Temperature",
+						backgroundColor: "blue",
+						data: this.props.temps
+					}
+				]
+			}
+		})
+	}
+
+
 	render() {
+
 
 		return (
 			<div className="chart">
@@ -26,7 +44,6 @@ export default class Chart extends React.Component {
 					data={this.state.data}
 
 				/>
-
 			</div>
 		)
 	};

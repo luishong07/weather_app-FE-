@@ -120,7 +120,7 @@ class MainContainer extends Component {
               margin: "auto"
             }}
           >
-            <NewsSearch />
+            <CitySearch />
 
           </div>
         </div>
@@ -149,9 +149,11 @@ class MainContainer extends Component {
                     dayWeather={this.state.fiveDayWeather}
                     weatherDetailDate={this.state.weatherDetailDate}
                     onClick={this.handleClick2}
+
                   />
                 ) : (
                   <WeatherCollection
+                    current={this.state.currentWeather}
                     weather={this.state.fiveDayWeatherParsed}
                     onClick={this.handleClick}
                   />
