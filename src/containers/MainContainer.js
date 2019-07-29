@@ -15,7 +15,7 @@ class MainContainer extends Component {
     NewsArr: [],
     fiveDayWeather: [],
     fiveDayWeatherParsed: [],
-    currentWeather: [],
+    currentWeather: null,
     date: "",
     weatherDetailDate: null,
   };
@@ -91,6 +91,7 @@ class MainContainer extends Component {
 
   
   render() {
+    // console.log(this.state.fiveDayWeather)
     
     return (
       <div>
@@ -106,7 +107,7 @@ class MainContainer extends Component {
           <div style={{ position: "relative", width: 1200, height: "auto" }} >
           {this.state.weatherDetailDate ?
           <WeatherDetailCard key ={this.state.weatherDetailDate} dayWeather={this.state.fiveDayWeather} weatherDetailDate={this.state.weatherDetailDate} onClick={this.handleClick2} />:
-          <WeatherCollection weather={this.state.fiveDayWeatherParsed} onClick={this.handleClick} />
+          <WeatherCollection current={this.state.currentWeather} weather={this.state.fiveDayWeatherParsed} onClick={this.handleClick} />
           }
           </div>
         </div>

@@ -10,7 +10,7 @@ export default class Chart extends React.Component {
 			datasets: [
 				{
 					label: "Temperature",
-					backgroundColor: "gray",
+					backgroundColor: "yellow",
 					data: this.props.weather.map( weather => Math.round((weather.main.temp-273.15)*9/5+32))
 				}
 			]
