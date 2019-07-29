@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import {MuiThemeProvider, TextField, RaisedButton} from 'material-ui'
 
-export default class LogIn extends Component {
+export default class SignUp extends Component {
   state = {
     username: "",
     hometown_city: "",
@@ -25,6 +26,9 @@ export default class LogIn extends Component {
       },
       body: JSON.stringify({
         username: this.state.username,
+        hometown_city: this.state.hometown_city,
+        hometown_country: this.state.hometown_country,
+        email: this.state.email,
         password: this.state.password
       })
     })
@@ -37,24 +41,49 @@ export default class LogIn extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.onSubmit} >
-          <label>Username: </label>
-          <input
-            type="text"
-            name="username"
-            value={this.state.username}
-            onChange={e => this.onChange(e)}
-          />
-          <label>Password: </label>
-          <input
-            type="text"
-            name="password"
-            value={this.state.password}
-            onChange={e => this.onChange(e)}
-          />
-          <button onSubmit={this.onSubmit} >LOGIN</button>
-        </form>
+      <div style={{textAlign: "center", margin: "25px"}}>
+        <h2>Sign Up</h2>
+        <MuiThemeProvider>
+        <div style={{position: "relative", margin: "auto"}}>
+          <form onSubmit={this.onSubmit} >
+            <TextField 
+                floatingLabelText="Username"
+                name="username"
+                value={this.state.username}
+                onChange={e => this.onChange(e)}
+            /><br></br>
+            <TextField 
+                floatingLabelText="Password"
+                name="password"
+                type="password"
+                value={this.state.password}
+                onChange={e => this.onChange(e)}
+            /><br></br>
+            <TextField 
+                floatingLabelText="Email"
+                name="email"
+                value={this.state.email}
+                onChange={e => this.onChange(e)}
+            /><br></br>
+            <TextField 
+                floatingLabelText="Hometown City"
+                name="hometown_city"
+                value={this.state.hometown_city}
+                onChange={e => this.onChange(e)}
+            /><br></br>
+            <TextField 
+                floatingLabelText="Hometown Country"
+                name="hometown_country"
+                value={this.state.hometown_country}
+                onChange={e => this.onChange(e)}
+            /><br></br>
+            <div >
+              <RaisedButton type="submit" style ={{margin: "15px"}} onSubmit={this.onSubmit} >Sign Up</RaisedButton>
+            </div>
+          </form>
+        </div>
+
+        </MuiThemeProvider>
       </div>
     );
   }

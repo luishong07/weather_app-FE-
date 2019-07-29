@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import NewsCollection from "./NewsCollection";
 import WeatherCollection from "./WeatherCollection";
-import NewsSearch from "../components/NewsSearch";
-import LogIn from "../components/LogIn";
+import CitySearch from "../components/CitySearch";
+
 import WeatherDetailCard from '../components/WeatherDetailCard';
+
+
 
 class MainContainer extends Component {
   
@@ -17,7 +19,7 @@ class MainContainer extends Component {
     fiveDayWeatherParsed: [],
     currentWeather: null,
     date: "",
-    weatherDetailDate: null,
+    weatherDetailDate: null
   };
 
   getDate() {
@@ -41,11 +43,13 @@ class MainContainer extends Component {
         // console.log(result.articles);
         this.setState({ NewsArr: result.articles });
       });
-      this.getFiveDayWeather()
-      this.getFiveDayParsed()
-      this.getCurrentWeather()
+      this.getFiveDayWeather();
+      this.getFiveDayParsed();
+      this.getCurrentWeather();
   }
 
+
+// All for Hometown API Searches vvv (need to take in user hometown city and country)
   getFiveDayWeather = () => {
     fetch("https://api.openweathermap.org/data/2.5/forecast?id=4699066&APPID=1178c91249e1986e193e0c736d80df29")
       .then( resp => resp.json() )
@@ -77,6 +81,8 @@ class MainContainer extends Component {
           })
         })
   }
+  // All for Hometown API Searches ^^^
+
   
   // When a weather card is clicked it changes the weatherDetailDate state and renders the weatherDetailCardComponent
   handleClick = (day) => {
@@ -95,9 +101,11 @@ class MainContainer extends Component {
     
     return (
       <div>
-        <div>
-          <LogIn />
-          <NewsSearch />
+        <div className ='row'>
+          
+          <div style={{ position: "relative center", width: 600, height: "auto", margin: "auto" }}>
+            <CitySearch />
+          </div>
           
         </div>
         <div style={this.mainDiv}>
