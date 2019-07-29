@@ -101,6 +101,7 @@ class MainContainer extends Component {
   newsClick = artical => {
     console.log(artical);
     this.setState({ NewsD: artical });
+    // this.refs.dropdown.focus();
   };
 
   newsClick2 = () => {
@@ -108,7 +109,6 @@ class MainContainer extends Component {
   };
 
   render() {
-
     return (
       <div>
         <div className="row">
@@ -120,8 +120,7 @@ class MainContainer extends Component {
               margin: "auto"
             }}
           >
-            <NewsSearch />
-
+            <CitySearch />
           </div>
         </div>
         <div style={this.mainDiv}>
@@ -158,7 +157,6 @@ class MainContainer extends Component {
                 )}
               </div>
             )}
-
           </div>
         </div>
       </div>
