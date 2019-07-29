@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {MuiThemeProvider, TextField} from 'material-ui'
-import Button from 'react-bootstrap/Button'
+import { RaisedButton } from 'material-ui'
 
 
 class LogIn extends Component {
@@ -18,7 +18,7 @@ class LogIn extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-    fetch("http://localhost:3001/login", {
+    fetch("http://localhost:3003/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -37,7 +37,8 @@ class LogIn extends Component {
 
   render() {
     return (
-      <div style={{textAlign: "center"}}>
+      <div style={{textAlign: "center", margin: "25px"}}>
+      <h2>Log In</h2>
         <MuiThemeProvider>
         <div>
           <form onSubmit={this.onSubmit} >
@@ -46,15 +47,16 @@ class LogIn extends Component {
                 name="username"
                 value={this.state.username}
                 onChange={e => this.onChange(e)}
-            />
+            /><br></br>
             <TextField 
                 floatingLabelText="Password"
                 name="password"
+                type="password"
                 value={this.state.password}
                 onChange={e => this.onChange(e)}
             />
             <div>
-              <Button variant ="primary" onSubmit={this.onSubmit} >Login</Button>
+              <RaisedButton type="submit" style ={{margin: "15px"}} onSubmit={this.onSubmit} >Login</RaisedButton>
             </div>
           </form>
         </div>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import {MuiThemeProvider, TextField} from 'material-ui'
-import Button from 'react-bootstrap/Button'
+import {MuiThemeProvider, TextField, RaisedButton} from 'material-ui'
 
 export default class SignUp extends Component {
   state = {
@@ -42,7 +41,8 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <div style={{textAlign: "center"}}>
+      <div style={{textAlign: "center", margin: "25px"}}>
+        <h2>Sign Up</h2>
         <MuiThemeProvider>
         <div style={{position: "relative", margin: "auto"}}>
           <form onSubmit={this.onSubmit} >
@@ -55,6 +55,7 @@ export default class SignUp extends Component {
             <TextField 
                 floatingLabelText="Password"
                 name="password"
+                type="password"
                 value={this.state.password}
                 onChange={e => this.onChange(e)}
             /><br></br>
@@ -75,9 +76,9 @@ export default class SignUp extends Component {
                 name="hometown_country"
                 value={this.state.hometown_country}
                 onChange={e => this.onChange(e)}
-            />
+            /><br></br>
             <div >
-              <Button variant ="primary" onSubmit={this.onSubmit} >Sign Up</Button>
+              <RaisedButton type="submit" style ={{margin: "15px"}} onSubmit={this.onSubmit} >Sign Up</RaisedButton>
             </div>
           </form>
         </div>

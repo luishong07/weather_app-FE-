@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NewsCollection from "./NewsCollection";
 import WeatherCollection from "./WeatherCollection";
-import NewsSearch from "../components/NewsSearch";
+import CitySearch from "../components/CitySearch";
 
 import WeatherDetailCard from "../components/WeatherDetailCard";
 import NewsDetail from "../components/NewsDetail";
@@ -15,7 +15,7 @@ class MainContainer extends Component {
     NewsArr: [],
     fiveDayWeather: [],
     fiveDayWeatherParsed: [],
-    currentWeather: [],
+    currentWeather: null,
     date: "",
     weatherDetailDate: null,
     NewsD: null
@@ -108,6 +108,7 @@ class MainContainer extends Component {
   };
 
   render() {
+
     return (
       <div>
         <div className="row">
@@ -120,6 +121,7 @@ class MainContainer extends Component {
             }}
           >
             <NewsSearch />
+
           </div>
         </div>
         <div style={this.mainDiv}>
@@ -129,6 +131,7 @@ class MainContainer extends Component {
               onClick={this.newsClick}
             />
           </div>
+
           <div>
             {this.state.NewsD ? (
               <NewsDetail
@@ -155,6 +158,7 @@ class MainContainer extends Component {
                 )}
               </div>
             )}
+
           </div>
         </div>
       </div>
