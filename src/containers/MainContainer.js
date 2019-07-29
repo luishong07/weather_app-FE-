@@ -4,6 +4,7 @@ import WeatherCollection from "./WeatherCollection";
 import NewsSearch from "../components/NewsSearch";
 import LogIn from "../components/LogIn";
 import WeatherDetailCard from '../components/WeatherDetailCard';
+import SignUp from '../components/SignUp';
 
 
 class MainContainer extends Component {

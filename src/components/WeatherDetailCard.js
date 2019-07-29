@@ -24,9 +24,10 @@ export default class WeatherDetailCard extends React.Component {
         return (
             <div>
                 
-                <Button variant ="primary" onClick={this.props.onClick} >Back to 5-Day</Button>
+                
                 
                 <div key= {this.props.weatherDetailDate} style={this.style} >
+                    <Button style ={{margin: "10px"}} variant ="primary" onClick={this.props.onClick} >Back to 5-Day</Button>
                     <Container fluid>
                     <Header as='h1'>{this.props.dayWeather.city.name} Weather on {this.props.weatherDetailDate} </Header>
                     <Table responsive >
