@@ -20,6 +20,34 @@ export default class WeatherDetailCard extends React.Component {
         let temps = allDayWeather.map(weather => Math.round((weather.main.temp-273.15)*9/5+32))
         let winds = allDayWeather.map(weather => (weather.wind))
         let times = allDayWeather.map(weather => weather.dt_txt)
+        let windDegrees = allDayWeather.map(weather => (weather.wind.deg))
+
+        let windDirection = windDegrees.map( weather => {
+            if ( weather > 0 && weather < 90 ) {
+                return "NE"
+            }
+            else if ( weather > 90 && weather < 180 ) {
+                return "NW"
+            }
+            else if ( weather > 180 && weather < 270 ) {
+                return "SW"
+            }
+            else if ( weather > 270 && weather < 360 ) {
+                return "SE"
+            }
+            else if ( weather === 0) {
+                return "E"
+            }
+            else if ( weather === 90) {
+                return "N"
+            }
+            else if ( weather === 180) {
+                return "W"
+            }
+            else if ( weather === 270) {
+                return "S"
+            }
+         })
         
         return (
             <div>
@@ -32,7 +60,6 @@ export default class WeatherDetailCard extends React.Component {
                     <Header as='h1'>{this.props.dayWeather.city.name} Weather on {this.props.weatherDetailDate} </Header>
                     <Table responsive >
                         <thead>
-                            
                         </thead>
                         <tbody>
                             <tr>
@@ -49,7 +76,7 @@ export default class WeatherDetailCard extends React.Component {
                             </tr>
                             <tr>
                                 <td>Wind Direction</td>
-                                {winds.map( wind => <td style ={this.colStyle}>{Math.round(wind.deg)} degrees</td>)}
+                                {windDirection.map( wind => <td style ={this.colStyle}>{wind}</td>)}
                             </tr>
 
                         </tbody>

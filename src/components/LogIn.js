@@ -37,28 +37,30 @@ class LogIn extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-      <div>
-        <form onSubmit={this.onSubmit} >
-          <TextField 
-              floatingLabelText="Username"
-              name="username"
-              value={this.state.username}
-              onChange={e => this.onChange(e)}
-          />
-          <TextField 
-              floatingLabelText="Password"
-              name="password"
-              value={this.state.password}
-              onChange={e => this.onChange(e)}
-          />
-          <div style={{textAlign: "left", marginLeft: "45px"}}>
-            <Button variant ="primary" onSubmit={this.onSubmit} >Login</Button>
-          </div>
-        </form>
-      </div>
+      <div style={{textAlign: "center"}}>
+        <MuiThemeProvider>
+        <div>
+          <form onSubmit={this.onSubmit} >
+            <TextField 
+                floatingLabelText="Username"
+                name="username"
+                value={this.state.username}
+                onChange={e => this.onChange(e)}
+            />
+            <TextField 
+                floatingLabelText="Password"
+                name="password"
+                value={this.state.password}
+                onChange={e => this.onChange(e)}
+            />
+            <div>
+              <Button variant ="primary" onSubmit={this.onSubmit} >Login</Button>
+            </div>
+          </form>
+        </div>
 
-      </MuiThemeProvider>
+        </MuiThemeProvider>
+      </div>
     );
   }
 }

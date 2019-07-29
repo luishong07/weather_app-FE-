@@ -42,46 +42,48 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-      <div style={{position: "relative", margin: "auto"}}>
-        <form onSubmit={this.onSubmit} >
-          <TextField 
-              floatingLabelText="Username"
-              name="username"
-              value={this.state.username}
-              onChange={e => this.onChange(e)}
-          /><br></br>
-          <TextField 
-              floatingLabelText="Password"
-              name="password"
-              value={this.state.password}
-              onChange={e => this.onChange(e)}
-          /><br></br>
-          <TextField 
-              floatingLabelText="Email"
-              name="email"
-              value={this.state.email}
-              onChange={e => this.onChange(e)}
-          /><br></br>
-          <TextField 
-              floatingLabelText="Hometown City"
-              name="hometown_city"
-              value={this.state.hometown_city}
-              onChange={e => this.onChange(e)}
-          /><br></br>
-          <TextField 
-              floatingLabelText="Hometown Country"
-              name="hometown_country"
-              value={this.state.hometown_country}
-              onChange={e => this.onChange(e)}
-          />
-          <div >
-            <Button variant ="primary" onSubmit={this.onSubmit} >Sign Up</Button>
-          </div>
-        </form>
-      </div>
+      <div style={{textAlign: "center"}}>
+        <MuiThemeProvider>
+        <div style={{position: "relative", margin: "auto"}}>
+          <form onSubmit={this.onSubmit} >
+            <TextField 
+                floatingLabelText="Username"
+                name="username"
+                value={this.state.username}
+                onChange={e => this.onChange(e)}
+            /><br></br>
+            <TextField 
+                floatingLabelText="Password"
+                name="password"
+                value={this.state.password}
+                onChange={e => this.onChange(e)}
+            /><br></br>
+            <TextField 
+                floatingLabelText="Email"
+                name="email"
+                value={this.state.email}
+                onChange={e => this.onChange(e)}
+            /><br></br>
+            <TextField 
+                floatingLabelText="Hometown City"
+                name="hometown_city"
+                value={this.state.hometown_city}
+                onChange={e => this.onChange(e)}
+            /><br></br>
+            <TextField 
+                floatingLabelText="Hometown Country"
+                name="hometown_country"
+                value={this.state.hometown_country}
+                onChange={e => this.onChange(e)}
+            />
+            <div >
+              <Button variant ="primary" onSubmit={this.onSubmit} >Sign Up</Button>
+            </div>
+          </form>
+        </div>
 
-      </MuiThemeProvider>
+        </MuiThemeProvider>
+      </div>
     );
   }
 }
