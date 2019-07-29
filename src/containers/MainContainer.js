@@ -19,11 +19,7 @@ class MainContainer extends Component {
     fiveDayWeatherParsed: [],
     currentWeather: [],
     date: "",
-    weatherDetailDate: null,
-    search: {
-      city: "",
-      country: ""
-    }
+    weatherDetailDate: null
   };
 
   getDate() {
@@ -53,7 +49,7 @@ class MainContainer extends Component {
   }
 
 
-
+// All for Hometown API Searches vvv (need to take in user hometown city and country)
   getFiveDayWeather = () => {
     fetch("https://api.openweathermap.org/data/2.5/forecast?id=4699066&APPID=1178c91249e1986e193e0c736d80df29")
       .then( resp => resp.json() )
@@ -85,6 +81,8 @@ class MainContainer extends Component {
           })
         })
   }
+  // All for Hometown API Searches ^^^
+
   
   // When a weather card is clicked it changes the weatherDetailDate state and renders the weatherDetailCardComponent
   handleClick = (day) => {
