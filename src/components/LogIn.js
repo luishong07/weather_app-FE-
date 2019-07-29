@@ -1,12 +1,9 @@
 import React, { Component } from "react";
+import {MuiThemeProvider, TextField} from 'material-ui'
+import Button from 'react-bootstrap/Button'
+
 
 class LogIn extends Component {
-  
-  
-  loginStyle = {
-    textAlign: "left",
-    margin: "10px"
-  }
 
   state = {
     username: "",
@@ -40,25 +37,28 @@ class LogIn extends Component {
 
   render() {
     return (
-      <div style={this.loginStyle} >
+      <MuiThemeProvider>
+      <div>
         <form onSubmit={this.onSubmit} >
-          <label>Username: </label>
-          <input
-            type="text"
-            name="username"
-            value={this.state.username}
-            onChange={e => this.onChange(e)}
+          <TextField 
+              floatingLabelText="Username"
+              name="username"
+              value={this.state.username}
+              onChange={e => this.onChange(e)}
           />
-          <label>Password: </label>
-          <input
-            type="text"
-            name="password"
-            value={this.state.password}
-            onChange={e => this.onChange(e)}
+          <TextField 
+              floatingLabelText="Password"
+              name="password"
+              value={this.state.password}
+              onChange={e => this.onChange(e)}
           />
-          <button onSubmit={this.onSubmit} >LOGIN</button>
+          <div style={{textAlign: "left", marginLeft: "45px"}}>
+            <Button variant ="primary" onSubmit={this.onSubmit} >Login</Button>
+          </div>
         </form>
       </div>
+
+      </MuiThemeProvider>
     );
   }
 }
