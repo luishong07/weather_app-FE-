@@ -6,11 +6,11 @@ export default class Chart extends React.Component {
 
 	state = {
 		data: {
-			labels: this.props.weather.map( weather => weather.dt_txt.substring(11,20)),
+			labels: this.props.weather.map( weather => new Date(weather.dt_txt+"Z").toLocaleTimeString()),
 			datasets: [
 				{
 					label: "Temperature",
-					backgroundColor: "gray",
+					backgroundColor: "blue",
 					data: this.props.weather.map( weather => Math.round((weather.main.temp-273.15)*9/5+32))
 				}
 			]
@@ -18,8 +18,6 @@ export default class Chart extends React.Component {
 	}
 
 	render() {
-
-		
 
 		return (
 			<div className="chart">
