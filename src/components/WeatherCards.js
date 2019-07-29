@@ -19,7 +19,7 @@ class WeatherCards extends Component {
   
   render() {
     // console.log(this.props.day)
-    console.log(typeof this.props.day.main.humidity)
+    // console.log(typeof this.props.day.main.humidity)
    if(!this.props.day){
      return null
    }

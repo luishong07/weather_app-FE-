@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import {MuiThemeProvider, TextField} from 'material-ui'
+import {MuiThemeProvider, TextField, RaisedButton} from 'material-ui'
 import Button from 'react-bootstrap/Button'
 
 
 
-class NewsSearch extends Component {
+class CitySearch extends Component {
 
 
   state = {
@@ -42,11 +42,11 @@ class NewsSearch extends Component {
               onChange={e => this.onChange(e)}
           />
           <div style={{textAlign: "left", marginLeft: "45px"}}>
-            <Button variant ="primary">Add Favorite City</Button>
+            <Button variant ="primary" type="submit" style={{margin: "auto", padding: "5px"}}>Add Favorite City</Button>
           </div>
         </form>
       </MuiThemeProvider>
     );
   }
 }
-export default NewsSearch;
+export default CitySearch;

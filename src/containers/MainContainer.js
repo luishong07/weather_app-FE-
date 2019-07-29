@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NewsCollection from "./NewsCollection";
 import WeatherCollection from "./WeatherCollection";
-import NewsSearch from "../components/NewsSearch";
+import CitySearch from "../components/CitySearch";
 
 import WeatherDetailCard from '../components/WeatherDetailCard';
 
@@ -17,7 +17,7 @@ class MainContainer extends Component {
     NewsArr: [],
     fiveDayWeather: [],
     fiveDayWeatherParsed: [],
-    currentWeather: [],
+    currentWeather: null,
     date: "",
     weatherDetailDate: null
   };
@@ -103,7 +103,7 @@ class MainContainer extends Component {
         <div className ='row'>
           
           <div style={{ position: "relative center", width: 600, height: "auto", margin: "auto" }}>
-            <NewsSearch />
+            <CitySearch />
           </div>
           
         </div>
@@ -111,12 +111,11 @@ class MainContainer extends Component {
           <div>
             <NewsCollection news={this.state.NewsArr} />
           </div>
-          
           <div style={{ position: "relative", width: 1200, height: "auto" }} >
-          {this.state.weatherDetailDate ?
-          <WeatherDetailCard key ={this.state.weatherDetailDate} dayWeather={this.state.fiveDayWeather} weatherDetailDate={this.state.weatherDetailDate} onClick={this.handleClick2} />:
-          <WeatherCollection weather={this.state.fiveDayWeatherParsed} onClick={this.handleClick} />
-          }
+            {this.state.weatherDetailDate ?
+            <WeatherDetailCard key ={this.state.weatherDetailDate} dayWeather={this.state.fiveDayWeather} weatherDetailDate={this.state.weatherDetailDate} onClick={this.handleClick2} />:
+            <WeatherCollection weather={this.state.fiveDayWeatherParsed} onClick={this.handleClick} />
+            }
           </div>
         </div>
       </div>
