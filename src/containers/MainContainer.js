@@ -5,6 +5,7 @@ import CitySearch from "../components/CitySearch";
 
 import WeatherDetailCard from "../components/WeatherDetailCard";
 import NewsDetail from "../components/NewsDetail";
+import picture from "../images/new.jpeg";
 
 class MainContainer extends Component {
 
@@ -53,6 +54,15 @@ class MainContainer extends Component {
 
 
   }
+  style = {
+    background: "#D7F0F3",
+    backgroundPosition: "center",
+    backgroundSize: "cover"
+  };
+
+  mainDiv = {
+    display: "flex"
+  };
 
   componentDidMount() {
     this.getDate();
@@ -145,24 +155,20 @@ class MainContainer extends Component {
 
 
     return (
-      <div style={{ backgroundColor: "white" }}>
+      <div style={this.style}>
         <div className="row">
           <div
             style={{
               position: "relative center",
-              width: 600,
               height: "auto",
               margin: "auto"
-
             }}
           >
-
             <CitySearch
               fetchSomething={this.somefunction}
               fetchSomething1={this.somefunction1}
               fetchSomething2={this.somefunction2}
             />
-
           </div>
         </div>
         <div style={this.mainDiv}>
@@ -181,32 +187,28 @@ class MainContainer extends Component {
                 onClick={this.newsClick2}
               />
             ) : (
-                <div
-                  style={{ position: "relative", width: 1200, height: "auto" }}
-                >
-                  {this.state.weatherDetailDate ? (
-                    <WeatherDetailCard
-                      key={this.state.weatherDetailDate}
-                      dayWeather={this.state.fiveDayWeather}
-                      weatherDetailDate={this.state.weatherDetailDate}
-                      onClick={this.handleClick2}
-                      user={this.state.user}
-
-                      searchDayWeather={this.state.SearchFetch5days}
-                    />
-                  ) : (
-                      <WeatherCollection
-                        search={this.state.SearchFetch}
-                        user={this.state.user}
-
-                        current={this.state.currentWeather}
-                        weather={this.state.fiveDayWeatherParsed}
-                        onClick={this.handleClick}
-                        searchWeather={this.state.SearchFetch5daysPar}
-                      />
-                    )}
-                </div>
-              )}
+              <div
+                style={{ position: "relative", width: 1200, height: "auto" }}
+              >
+                {this.state.weatherDetailDate ? (
+                  <WeatherDetailCard
+                    key={this.state.weatherDetailDate}
+                    dayWeather={this.state.fiveDayWeather}
+                    weatherDetailDate={this.state.weatherDetailDate}
+                    onClick={this.handleClick2}
+                    searchDayWeather={this.state.SearchFetch5days}
+                  />
+                ) : (
+                  <WeatherCollection
+                    search={this.state.SearchFetch}
+                    current={this.state.currentWeather}
+                    weather={this.state.fiveDayWeatherParsed}
+                    onClick={this.handleClick}
+                    searchWeather={this.state.SearchFetch5daysPar}
+                  />
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -36,11 +36,11 @@ class WeatherCollection extends Component {
         <div className="ui container" style={this.style}>
           {!searchFiveDayWeather
             ? null
-            : searchFiveDayWeather.map(Day => {
+            : searchFiveDayWeather.map(day => {
                 return (
                   <WeatherCards
-                    key={Day.dt}
-                    day={Day}
+                    key={day.dt}
+                    day={day}
                     onClick={this.props.onClick}
                   />
                 );
