@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import picture from "../images/background.png";
+import picture from "../images/clouds.jpg";
 
 class CurrentCard extends Component {
   style = {

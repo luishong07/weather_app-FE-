@@ -3,7 +3,7 @@ import { Container, Header } from "semantic-ui-react";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import Chart from "./Chart";
-import picture from "../images/background1.png";
+import picture from "../images/new.jpeg";
 
 export default class WeatherDetailCard extends React.Component {
   style = {
