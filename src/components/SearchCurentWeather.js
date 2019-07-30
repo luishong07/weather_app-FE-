@@ -12,7 +12,7 @@ class SearchCurentWeather extends Component {
   };
 
   render() {
-    console.log(this.props.search, "from scw");
+    // console.log(this.props.search, "from scw");
 
     if (!this.props.search) {
       return null;

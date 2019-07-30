@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import picture from "../images/background.png";
+import picture from "../images/clouds.jpg";
 
 class WeatherCards extends Component {
   style = {
@@ -108,7 +108,7 @@ weatherSymbol = ()=>{
     //  console.log(this.props.weather.list)
     return (
       <div className="ui card" style={this.style} onClick={this.getDay}>
-        {/* <h2>Hi from WeatherCards </h2> */}
+        <h2>Search cards </h2>
         <div className="content">
         <h3>{dateSplit}</h3>
         {/* <i style={this.thing} class='fas'>&#xf753;</i> */}

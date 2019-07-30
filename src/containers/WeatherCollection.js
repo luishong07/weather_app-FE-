@@ -14,33 +14,33 @@ class WeatherCollection extends Component {
     // console.log(this.props.current,"plus ultra")
     let fiveDayWeather = this.props.weather;
     let searchFiveDayWeather = this.props.searchWeather;
-    if (!this.props.weather) {
+    let user =  this.props.user;
+    if (!this.props.weather || !this.props.user) {
       return null;
     }
 
-    console.log(searchFiveDayWeather, "sadasdasdasdas");
     return (
       <div>
         <div>
           <div className="ui container" style={this.style}>
             <SearchCurentWeather search={this.props.search} />
           </div>
-          <h1>Current Weather</h1>
+          <h1>{user.hometown_city} Current Weather</h1>
         </div>
         <div className="ui container" style={this.style}>
           <CurrentCard current={this.props.current} />
         </div>
         <div>
-          <h1>5 Day Weather Forecast</h1>
+          <h1>{user.hometown_city} 5 Day Weather Forecast</h1>
         </div>
         <div className="ui container" style={this.style}>
           {!searchFiveDayWeather
             ? null
-            : searchFiveDayWeather.map(Day => {
+            : searchFiveDayWeather.map(day => {
                 return (
                   <WeatherCards
-                    key={Day.dt}
-                    day={Day}
+                    key={day.dt}
+                    day={day}
                     onClick={this.props.onClick}
                   />
                 );

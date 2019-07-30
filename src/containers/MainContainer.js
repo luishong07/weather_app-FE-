@@ -5,11 +5,13 @@ import CitySearch from "../components/CitySearch";
 
 import WeatherDetailCard from "../components/WeatherDetailCard";
 import NewsDetail from "../components/NewsDetail";
+import picture from "../images/new.jpeg";
 
 class MainContainer extends Component {
-  // spanStyle = {
-  //   display: "inline-block"
-  // }
+
+  mainDiv = {
+    display: "flex"
+  };
 
   state = {
     NewsArr: [],
@@ -21,7 +23,8 @@ class MainContainer extends Component {
     NewsD: null,
     SearchFetch: null,
     SearchFetch5days: null,
-    SearchFetch5daysPar: null
+    SearchFetch5daysPar: null,
+    user: null
   };
 
   getDate() {
@@ -30,6 +33,33 @@ class MainContainer extends Component {
       date: date
     });
   }
+
+
+  getUser() {
+    fetch(`http://localhost:3001/users/${localStorage.getItem('id')}`, {
+      method: "GET",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+      .then(resp => resp.json())
+      .then(result => {
+        this.getFiveDayWeather(result)
+        this.getFiveDayParsed(result);
+        this.getCurrentWeather(result);
+        this.setState({
+          user: result
+        })
+        console.log('fuck you!!!!')
+      })
+
+
+  }
+  style = {
+    background: "#D7F0F3",
+    backgroundPosition: "center",
+    backgroundSize: "cover"
+  };
 
   mainDiv = {
     display: "flex"
@@ -45,15 +75,14 @@ class MainContainer extends Component {
         // console.log(result.articles);
         this.setState({ NewsArr: result.articles });
       });
-    this.getFiveDayWeather();
-    this.getFiveDayParsed();
-    this.getCurrentWeather();
+    this.getUser();
+    
   }
 
   // All for Hometown API Searches vvv (need to take in user hometown city and country)
-  getFiveDayWeather = () => {
+  getFiveDayWeather = (user) => {
     fetch(
-      "https://api.openweathermap.org/data/2.5/forecast?id=4699066&APPID=1178c91249e1986e193e0c736d80df29"
+      `https://api.openweathermap.org/data/2.5/forecast?q=${user.hometown_city},${user.hometown_country}&APPID=1178c91249e1986e193e0c736d80df29`
     )
       .then(resp => resp.json())
       .then(weather => {
@@ -73,9 +102,9 @@ class MainContainer extends Component {
     this.setState({ SearchFetch5daysPar: arg });
   };
 
-  getFiveDayParsed = () => {
+  getFiveDayParsed = (user) => {
     fetch(
-      "https://api.openweathermap.org/data/2.5/forecast?id=4699066&APPID=1178c91249e1986e193e0c736d80df29"
+      `https://api.openweathermap.org/data/2.5/forecast?q=${user.hometown_city},${user.hometown_country}&APPID=1178c91249e1986e193e0c736d80df29`
     )
       .then(resp => resp.json())
       .then(weather => {
@@ -88,9 +117,9 @@ class MainContainer extends Component {
       });
   };
 
-  getCurrentWeather = () => {
+  getCurrentWeather = (user) => {
     fetch(
-      "https://api.openweathermap.org/data/2.5/weather?id=4699066&APPID=1178c91249e1986e193e0c736d80df29"
+      `https://api.openweathermap.org/data/2.5/weather?q=${user.hometown_city},${user.hometown_country}&APPID=1178c91249e1986e193e0c736d80df29`
     )
       .then(resp => resp.json())
       .then(weather => {
@@ -122,25 +151,25 @@ class MainContainer extends Component {
   };
 
   render() {
+
+    console.log(this.state.user)
+
+
     return (
-      <div style={{backgroundColor: "white"}}>
+      <div style={this.style}>
         <div className="row">
           <div
             style={{
               position: "relative center",
-              width: 600,
               height: "auto",
               margin: "auto"
-        
             }}
           >
-
             <CitySearch
               fetchSomething={this.somefunction}
               fetchSomething1={this.somefunction1}
               fetchSomething2={this.somefunction2}
             />
-
           </div>
         </div>
         <div style={this.mainDiv}>
@@ -168,17 +197,17 @@ class MainContainer extends Component {
                     dayWeather={this.state.fiveDayWeather}
                     weatherDetailDate={this.state.weatherDetailDate}
                     onClick={this.handleClick2}
-
                     searchDayWeather={this.state.SearchFetch5days}
+                    user={this.state.user}
                   />
                 ) : (
                   <WeatherCollection
                     search={this.state.SearchFetch}
-
                     current={this.state.currentWeather}
                     weather={this.state.fiveDayWeatherParsed}
                     onClick={this.handleClick}
                     searchWeather={this.state.SearchFetch5daysPar}
+                    user={this.state.user}
                   />
                 )}
               </div>

@@ -9,15 +9,21 @@ class CitySearch extends Component {
     searchWeather: ""
   };
 
+  style = {
+    background: "#E5F3F3",
+    borderBottom: "blue",
+    width: 1600
+  };
+
   onChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value      
     });
   };
 
   onSubmit = e => {
     e.preventDefault();
-    console.log("working");
+    // console.log("working");
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${
         this.state.country
@@ -25,7 +31,7 @@ class CitySearch extends Component {
     )
       .then(resp => resp.json())
       .then(result => {
-        console.log(result, "OVVVVVVVVVv");
+        // console.log(result, "OVVVVVVVVVv");
 
         this.props.fetchSomething(result);
       });
@@ -62,32 +68,35 @@ class CitySearch extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-        <form onSubmit={this.onSubmit}>
-          <TextField
-            floatingLabelText="City"
-            name="city"
-            value={this.state.city}
-            onChange={e => this.onChange(e)}
-          />
-          <TextField
-            floatingLabelText="Country"
-            name="country"
-            value={this.state.country}
-            onChange={e => this.onChange(e)}
-          />
-          <div style={{ textAlign: "left", marginLeft: "45px" }}>
-            <Button
-              onClick={this.onSubmit}
-              variant="primary"
-              type="submit"
-              style={{ margin: "auto", padding: "5px" }}
-            >
-              Add Favorite City
-            </Button>
-          </div>
-        </form>
-      </MuiThemeProvider>
+      <div style={this.style}>
+        <MuiThemeProvider>
+          <form onSubmit={this.onSubmit}>
+            <TextField
+              floatingLabelText="City"
+              name="city"
+              value={this.state.city}
+              onChange={e => this.onChange(e)}
+            />
+            <TextField
+              floatingLabelText="Country"
+              name="country"
+              value={this.state.country}
+              onChange={e => this.onChange(e)}
+            />
+            <div>
+              <Button
+                onClick={this.onSubmit}
+                variant="primary"
+                type="submit"
+                style={{ margin: "auto", padding: "5px" }}
+              >
+                Search Weather
+              </Button>
+            </div>
+          </form>
+        </MuiThemeProvider>
+        <hr />
+      </div>
     );
   }
 }

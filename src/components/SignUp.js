@@ -49,7 +49,9 @@ export default class SignUp extends Component {
       .then(result => {
         console.log(result);
         localStorage.setItem("token", result.auth_token)
-      });
+        localStorage.setItem("id", result.id)
+      })
+      .then( () => { window.location.replace('http://localhost:3000/login') })
   };
 
   render() {
