@@ -13,11 +13,36 @@ export default class WeatherDetailCard extends React.Component {
         borderColor: "gray"
     }
 
+    state = {
+        celsius: true,
+        color: "blue",
+        temps: this.props.dayWeather.list.filter( weather => weather.dt_txt.includes(this.props.weatherDetailDate)).map(weather => Math.round((weather.main.temp-273.15)))
+    }
+
+    celsiusConverter = () => {
+        let allDayWeather = this.props.dayWeather.list.filter( weather => weather.dt_txt.includes(this.props.weatherDetailDate))
+
+        if (this.state.celsius === true) {
+            this.setState({
+                celsius: false,
+                color: "yellow",
+                temps: this.state.temps.map(temp => Math.round(temp*9/5+32))
+            })
+            
+        } else if (this.state.celsius === false) {
+            this.setState({
+                celsius: true,
+                color: "blue",
+                temps: this.state.temps.map(temp => Math.round((temp-32)*5/9) )
+            })
+        }
+    }
+
     render() {
 
         
         let allDayWeather = this.props.dayWeather.list.filter( weather => weather.dt_txt.includes(this.props.weatherDetailDate))
-        let temps = allDayWeather.map(weather => Math.round((weather.main.temp-273.15)*9/5+32))
+        let temps = allDayWeather.map(weather => Math.round((weather.main.temp-273.15)))
         let winds = allDayWeather.map(weather => (weather.wind))
         let times = allDayWeather.map(weather => weather.dt_txt)
         let windDegrees = allDayWeather.map(weather => (weather.wind.deg))
@@ -51,10 +76,9 @@ export default class WeatherDetailCard extends React.Component {
         
         return (
             <div>
-                
-                
-                
+              
                 <div key= {this.props.weatherDetailDate} style={this.style} >
+                    <Button style ={{margin: "10px"}} variant ="primary" onClick={this.celsiusConverter} >&#176; C / &#176; F</Button>
                     <Button style ={{margin: "10px"}} variant ="primary" onClick={this.props.onClick} >Back to 5-Day</Button>
                     <Container fluid>
                     <Header as='h1'>{this.props.dayWeather.city.name} Weather on {this.props.weatherDetailDate} </Header>
@@ -68,7 +92,11 @@ export default class WeatherDetailCard extends React.Component {
                             </tr>
                             <tr>
                                 <td>Temperature</td>
-                                {temps.map( temp => <td style ={this.colStyle}>{temp} &#176; F</td>)}
+                                {!this.state.celsius ?
+                                    temps.map( temp => <td style ={this.colStyle}>{(temp*9/5)+32} &#176; F</td>):
+                                    temps.map( temp => <td style ={this.colStyle}>{temp} &#176; C</td>)
+                                }
+                                
                             </tr>
                             <tr>
                                 <td>Wind Speed</td>
@@ -82,7 +110,13 @@ export default class WeatherDetailCard extends React.Component {
                         </tbody>
                         </Table>
                         <div style={{ position: "relative center", width: 800, height: "auto", margin: "auto" }}>
-                            <Chart weather={allDayWeather} />
+                            <Chart
+                            color={this.state.color}
+                            temps={this.state.temps}
+                            weather={allDayWeather}
+                            celsius={this.state.celsius}
+
+                            />
                         </div>
                         
                     </Container>

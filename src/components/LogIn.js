@@ -18,7 +18,7 @@ class LogIn extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-    fetch("http://localhost:3003/login", {
+    fetch("http://localhost:3001/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -32,6 +32,9 @@ class LogIn extends Component {
       .then(result => {
         console.log(result);
         localStorage.setItem("token", result.auth_token)
+        localStorage.setItem("id", result.id)
+
+
       });
   };
 

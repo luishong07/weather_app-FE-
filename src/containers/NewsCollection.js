@@ -3,10 +3,9 @@ import React, { Component } from "react";
 import NewsCards from "../components/NewsCards";
 
 class NewsCollection extends Component {
-
-  style= {
+  style = {
     margin: "10px"
-  }
+  };
 
   render() {
     return (
@@ -14,10 +13,8 @@ class NewsCollection extends Component {
         {this.props.news.map(article => (
           <NewsCards
             key={this.props.news.indexOf(article)}
-            title={article.title}
-            description={article.description}
-            author={article.author}
-            image={article.urlToImage}
+            article={article}
+            onClick={this.props.onClick}
           />
         ))}
       </div>
