@@ -11,7 +11,7 @@ export default class Chart extends React.Component {
 			datasets: [
 				{
 					label: "Temperature",
-					backgroundColor: "blue",
+					backgroundColor: this.props.color,
 					data: this.props.temps
 				}
 			]
@@ -25,7 +25,7 @@ export default class Chart extends React.Component {
 				datasets: [
 					{
 						label: "Temperature",
-						backgroundColor: "blue",
+						backgroundColor: this.props.color,
 						data: this.props.temps
 					}
 				]
@@ -41,7 +41,7 @@ export default class Chart extends React.Component {
 			datasets: [
 				{
 					label: "Temperature",
-					backgroundColor: "blue",
+					backgroundColor: this.props.color,
 					data: this.props.temps
 				}
 			]

@@ -15,6 +15,7 @@ export default class WeatherDetailCard extends React.Component {
 
     state = {
         celsius: true,
+        color: "blue",
         temps: this.props.dayWeather.list.filter( weather => weather.dt_txt.includes(this.props.weatherDetailDate)).map(weather => Math.round((weather.main.temp-273.15)))
     }
 
@@ -24,12 +25,14 @@ export default class WeatherDetailCard extends React.Component {
         if (this.state.celsius === true) {
             this.setState({
                 celsius: false,
+                color: "yellow",
                 temps: this.state.temps.map(temp => Math.round(temp*9/5+32))
             })
             
         } else if (this.state.celsius === false) {
             this.setState({
                 celsius: true,
+                color: "blue",
                 temps: this.state.temps.map(temp => Math.round((temp-32)*5/9) )
             })
         }
