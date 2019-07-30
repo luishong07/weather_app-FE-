@@ -26,9 +26,37 @@ class CitySearch extends Component {
       .then(resp => resp.json())
       .then(result => {
         console.log(result, "OVVVVVVVVVv");
-        this.setState({
-          searchWeather: result
-        });
+
+        this.props.fetchSomething(result);
+      });
+    this.searchGetFiveDayWeather();
+    this.searchGetFiveDayParsed();
+  };
+
+  searchGetFiveDayWeather = () => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.city},${
+        this.state.country
+      }&APPID=1178c91249e1986e193e0c736d80df29`
+    )
+      .then(resp => resp.json())
+      .then(result => {
+        this.props.fetchSomething1(result);
+      });
+  };
+
+  searchGetFiveDayParsed = () => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.city},${
+        this.state.country
+      }&APPID=1178c91249e1986e193e0c736d80df29`
+    )
+      .then(resp => resp.json())
+      .then(weather => {
+        let parsedWeather = weather.list.filter(weather =>
+          weather.dt_txt.includes("12:00:00")
+        );
+        this.props.fetchSomething2(parsedWeather);
       });
   };
 

@@ -5,7 +5,7 @@ class Header extends Component {
     return (
       <header>
         <div className="ui segment inverted olive bot-army">
-          <h1>Fucking Weather App</h1>
+          <h1>Weather App</h1>
         </div>
       </header>
     );

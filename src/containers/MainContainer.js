@@ -18,7 +18,10 @@ class MainContainer extends Component {
     currentWeather: null,
     date: "",
     weatherDetailDate: null,
-    NewsD: null
+    NewsD: null,
+    SearchFetch: null,
+    SearchFetch5days: null,
+    SearchFetch5daysPar: null
   };
 
   getDate() {
@@ -58,6 +61,16 @@ class MainContainer extends Component {
           fiveDayWeather: weather
         });
       });
+  };
+
+  somefunction = arg => {
+    this.setState({ SearchFetch: arg });
+  };
+  somefunction1 = arg => {
+    this.setState({ SearchFetch5days: arg });
+  };
+  somefunction2 = arg => {
+    this.setState({ SearchFetch5daysPar: arg });
   };
 
   getFiveDayParsed = () => {
@@ -120,7 +133,11 @@ class MainContainer extends Component {
               margin: "auto"
             }}
           >
-            <CitySearch />
+            <CitySearch
+              fetchSomething={this.somefunction}
+              fetchSomething1={this.somefunction1}
+              fetchSomething2={this.somefunction2}
+            />
           </div>
         </div>
         <div style={this.mainDiv}>
@@ -148,11 +165,15 @@ class MainContainer extends Component {
                     dayWeather={this.state.fiveDayWeather}
                     weatherDetailDate={this.state.weatherDetailDate}
                     onClick={this.handleClick2}
+                    searchDayWeather={this.state.SearchFetch5days}
                   />
                 ) : (
                   <WeatherCollection
+                    search={this.state.SearchFetch}
+                    current={this.state.currentWeather}
                     weather={this.state.fiveDayWeatherParsed}
                     onClick={this.handleClick}
+                    searchWeather={this.state.SearchFetch5daysPar}
                   />
                 )}
               </div>
