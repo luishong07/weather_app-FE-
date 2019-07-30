@@ -11,13 +11,13 @@ class CitySearch extends Component {
 
   onChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value      
     });
   };
 
   onSubmit = e => {
     e.preventDefault();
-    console.log("working");
+    // console.log("working");
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${
         this.state.country
@@ -25,7 +25,7 @@ class CitySearch extends Component {
     )
       .then(resp => resp.json())
       .then(result => {
-        console.log(result, "OVVVVVVVVVv");
+        // console.log(result, "OVVVVVVVVVv");
 
         this.props.fetchSomething(result);
       });

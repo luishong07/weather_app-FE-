@@ -3,6 +3,7 @@ import {MuiThemeProvider, TextField} from 'material-ui'
 import { RaisedButton } from 'material-ui'
 
 
+
 class LogIn extends Component {
 
   style = {
@@ -44,9 +45,9 @@ class LogIn extends Component {
         console.log(result);
         localStorage.setItem("token", result.auth_token)
         localStorage.setItem("id", result.id)
-
-
-      });
+      })
+      .then( () => { window.location.replace('http://localhost:3000/') })
+      
   };
 
   render() {

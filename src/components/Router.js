@@ -6,6 +6,9 @@ import SignUp from "./SignUp";
 
 export class Router extends Component {
   render() {
+
+    
+
     return (
       <BrowserRouter>
         <Switch>
