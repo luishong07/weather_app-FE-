@@ -50,6 +50,7 @@ class MainContainer extends Component {
         this.setState({
           user: result
         })
+        console.log('fuck you!!!!')
       })
 
 
@@ -197,6 +198,7 @@ class MainContainer extends Component {
                     weatherDetailDate={this.state.weatherDetailDate}
                     onClick={this.handleClick2}
                     searchDayWeather={this.state.SearchFetch5days}
+                    user={this.state.user}
                   />
                 ) : (
                   <WeatherCollection
@@ -205,6 +207,7 @@ class MainContainer extends Component {
                     weather={this.state.fiveDayWeatherParsed}
                     onClick={this.handleClick}
                     searchWeather={this.state.SearchFetch5daysPar}
+                    user={this.state.user}
                   />
                 )}
               </div>
