@@ -18,21 +18,6 @@ export default class Chart extends React.Component {
 		}
 	}
 
-	componentWillReceiveProps () {
-		this.setState({
-			data: {
-				labels: this.props.weather.map( weather => new Date(weather.dt_txt+"Z").toLocaleTimeString()),
-				datasets: [
-					{
-						label: "Temperature",
-						backgroundColor: this.props.color,
-						data: this.props.temps
-					}
-				]
-			}
-		})
-	}
-
 
 	render() {
 
