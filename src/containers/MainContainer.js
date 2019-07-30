@@ -5,6 +5,7 @@ import CitySearch from "../components/CitySearch";
 
 import WeatherDetailCard from "../components/WeatherDetailCard";
 import NewsDetail from "../components/NewsDetail";
+import picture from "../images/new.jpeg";
 
 class MainContainer extends Component {
   // spanStyle = {
@@ -30,6 +31,12 @@ class MainContainer extends Component {
       date: date
     });
   }
+
+  style = {
+    background: "#D7F0F3",
+    backgroundPosition: "center",
+    backgroundSize: "cover"
+  };
 
   mainDiv = {
     display: "flex"
@@ -123,24 +130,20 @@ class MainContainer extends Component {
 
   render() {
     return (
-      <div style={{backgroundColor: "white"}}>
+      <div style={this.style}>
         <div className="row">
           <div
             style={{
               position: "relative center",
-              width: 600,
               height: "auto",
               margin: "auto"
-        
             }}
           >
-
             <CitySearch
               fetchSomething={this.somefunction}
               fetchSomething1={this.somefunction1}
               fetchSomething2={this.somefunction2}
             />
-
           </div>
         </div>
         <div style={this.mainDiv}>
@@ -168,13 +171,11 @@ class MainContainer extends Component {
                     dayWeather={this.state.fiveDayWeather}
                     weatherDetailDate={this.state.weatherDetailDate}
                     onClick={this.handleClick2}
-
                     searchDayWeather={this.state.SearchFetch5days}
                   />
                 ) : (
                   <WeatherCollection
                     search={this.state.SearchFetch}
-
                     current={this.state.currentWeather}
                     weather={this.state.fiveDayWeatherParsed}
                     onClick={this.handleClick}

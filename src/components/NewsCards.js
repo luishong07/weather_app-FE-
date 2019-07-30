@@ -1,10 +1,17 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+
+import picture from "../images/newss.jpg";
 
 class NewsCard extends Component {
+  style = {
+    backgroundImage: "url( " + picture + " )",
+    backgroundPosition: "center",
+    backgroundSize: "cover"
+  };
+
   render() {
     return (
-      <div className="ui card">
+      <div className="ui card" style={this.style}>
         <div className="content">
           <div className="header">{this.props.article.title}</div>
         </div>
