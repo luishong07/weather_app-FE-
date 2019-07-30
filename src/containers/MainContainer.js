@@ -42,7 +42,7 @@ class MainContainer extends Component {
     )
       .then(res => res.json())
       .then(result => {
-        console.log(result.articles);
+        // console.log(result.articles);
         this.setState({ NewsArr: result.articles });
       });
     this.getFiveDayWeather();
@@ -112,7 +112,7 @@ class MainContainer extends Component {
   };
 
   newsClick = artical => {
-    console.log(artical);
+    // console.log(artical);
     this.setState({ NewsD: artical });
     // this.refs.dropdown.focus();
   };
@@ -123,7 +123,7 @@ class MainContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{backgroundColor: "white"}}>
         <div className="row">
           <div
             style={{
@@ -131,13 +131,16 @@ class MainContainer extends Component {
               width: 600,
               height: "auto",
               margin: "auto"
+        
             }}
           >
+
             <CitySearch
               fetchSomething={this.somefunction}
               fetchSomething1={this.somefunction1}
               fetchSomething2={this.somefunction2}
             />
+
           </div>
         </div>
         <div style={this.mainDiv}>
@@ -165,11 +168,13 @@ class MainContainer extends Component {
                     dayWeather={this.state.fiveDayWeather}
                     weatherDetailDate={this.state.weatherDetailDate}
                     onClick={this.handleClick2}
+
                     searchDayWeather={this.state.SearchFetch5days}
                   />
                 ) : (
                   <WeatherCollection
                     search={this.state.SearchFetch}
+
                     current={this.state.currentWeather}
                     weather={this.state.fiveDayWeatherParsed}
                     onClick={this.handleClick}
