@@ -3,6 +3,8 @@ import React, { Component } from "react";
 class CurrentCard extends Component{
 
     style = {
+       
+        
         margin: "5px",
         padding: "4px",
         borderStyle: "solid",
