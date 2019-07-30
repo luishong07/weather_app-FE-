@@ -14,7 +14,7 @@ class CurrentCard extends Component{
     }
 
     render(){
-        console.log(this.props.current)
+        // console.log(this.props.current)
 
         if(!this.props.current){
             return null

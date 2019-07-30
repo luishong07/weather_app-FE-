@@ -7,7 +7,8 @@ import Chart from './Chart'
 export default class WeatherDetailCard extends React.Component {
     
     style = {
-        margin: "10px",
+        margin: "15px",
+        padding: "10px",
         borderWidth: "1px",
         borderStyle: "solid",
         borderColor: "gray"
@@ -78,10 +79,11 @@ export default class WeatherDetailCard extends React.Component {
             <div>
               
                 <div key= {this.props.weatherDetailDate} style={this.style} >
-                    <Button style ={{margin: "10px"}} variant ="primary" onClick={this.celsiusConverter} >&#176; C / &#176; F</Button>
-                    <Button style ={{margin: "10px"}} variant ="primary" onClick={this.props.onClick} >Back to 5-Day</Button>
+                    
                     <Container fluid>
-                    <Header as='h1'>{this.props.dayWeather.city.name} Weather on {this.props.weatherDetailDate} </Header>
+                    <div style={{margin :"10px"}}>
+                        <Header as='h1'>{this.props.dayWeather.city.name} Weather on {this.props.weatherDetailDate} </Header>
+                    </div>
                     <Table responsive >
                         <thead>
                         </thead>
@@ -120,6 +122,10 @@ export default class WeatherDetailCard extends React.Component {
                         </div>
                         
                     </Container>
+                    <div>
+                        <Button style ={{margin: "10px"}} variant ="primary" onClick={this.celsiusConverter} >&#176; C / &#176; F</Button>
+                        <Button style ={{margin: "10px"}} variant ="primary" onClick={this.props.onClick} >Back to 5-Day</Button>
+                    </div>
                 </div>
             </div>
         );

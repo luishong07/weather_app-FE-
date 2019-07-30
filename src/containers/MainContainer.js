@@ -39,7 +39,7 @@ class MainContainer extends Component {
     )
       .then(res => res.json())
       .then(result => {
-        console.log(result.articles);
+        // console.log(result.articles);
         this.setState({ NewsArr: result.articles });
       });
     this.getFiveDayWeather();
@@ -99,7 +99,7 @@ class MainContainer extends Component {
   };
 
   newsClick = artical => {
-    console.log(artical);
+    // console.log(artical);
     this.setState({ NewsD: artical });
   };
 
@@ -110,7 +110,7 @@ class MainContainer extends Component {
   render() {
 
     return (
-      <div>
+      <div style={{backgroundColor: "white"}}>
         <div className="row">
           <div
             style={{
@@ -118,6 +118,7 @@ class MainContainer extends Component {
               width: 600,
               height: "auto",
               margin: "auto"
+        
             }}
           >
             <CitySearch />
