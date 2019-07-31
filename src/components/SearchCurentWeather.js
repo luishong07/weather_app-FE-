@@ -28,13 +28,23 @@ class SearchCurentWeather extends Component {
     // }
 
     // console.log(this.props.current)
-
-    return (
+    //openweathermap.org/img/wn/10d@2x.png
+    http: return (
       <div className="ui card" style={this.style} onClick={this.getDay}>
         <div className="content">
           <h1>{this.props.search.name} current weather:</h1>
           <h3>{this.props.search.weather[0].description}</h3>
-          <h3>{this.props.search.weather[0].icon}</h3>
+          <h3>
+            <img
+              src={
+                "http://openweathermap.org/img/wn/" +
+                this.props.search.weather[0].icon +
+                "@2x.png"
+              }
+              alt={"logo"}
+            />
+          </h3>
+
           <h3> Humidity:{this.props.search.main.humidity}%</h3>
           <h3>
             {" "}

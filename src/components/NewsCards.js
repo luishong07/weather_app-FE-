@@ -29,15 +29,6 @@ class NewsCard extends Component {
           >
             See article
           </button>
-          <button>
-            <a
-              target="_blank"
-              style={{ color: "blue" }}
-              href={this.props.article.url}
-            >
-              Original website
-            </a>
-          </button>
         </div>
       </div>
     );

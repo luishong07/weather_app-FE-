@@ -35,7 +35,15 @@ export default class NewsDetail extends React.Component {
             {this.props.NewsD.props.article.author}
           </a>
         </div>
-        <button onClick={this.props.onClick}> Back to normal </button>
+        <button onClick={this.props.onClick}> Back </button>
+
+        <a
+          target="_blank"
+          style={{ color: "blue" }}
+          href={this.props.NewsD.props.article.url}
+        >
+          Original website
+        </a>
       </div>
     );
   }
