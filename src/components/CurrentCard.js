@@ -41,7 +41,8 @@ class CurrentCard extends Component {
           <h3> Humidity:{this.props.current.main.humidity}%</h3>
           <h3>
             {" "}
-            Temperature:{Math.round(this.props.current.main.temp - 273)}° C{" "}
+            Temperature:
+            {Math.round(((this.props.current.main.temp - 273) * 9) / 5 + 32)}
           </h3>
           <h3> Windspeed: {this.props.current.wind.speed}mph</h3>
         </div>

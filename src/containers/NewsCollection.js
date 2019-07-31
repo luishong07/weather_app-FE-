@@ -10,6 +10,7 @@ class NewsCollection extends Component {
   render() {
     return (
       <div style={this.style}>
+        <h1>New World News</h1>
         {this.props.news.map(article => (
           <NewsCards
             key={this.props.news.indexOf(article)}

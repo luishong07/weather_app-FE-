@@ -23,7 +23,21 @@ class NewsCard extends Component {
           {this.props.article.author}
         </div>
         <div>
-          <button onClick={e => this.props.onClick(this)}>See article</button>
+          <button
+            style={{ color: "blue" }}
+            onClick={e => this.props.onClick(this)}
+          >
+            See article
+          </button>
+          <button>
+            <a
+              target="_blank"
+              style={{ color: "blue" }}
+              href={this.props.article.url}
+            >
+              Original website
+            </a>
+          </button>
         </div>
       </div>
     );

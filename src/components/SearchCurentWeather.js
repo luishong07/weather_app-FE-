@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import picture from "../images/clouds.jpg";
 
 class SearchCurentWeather extends Component {
   style = {
@@ -8,7 +9,10 @@ class SearchCurentWeather extends Component {
     borderWidth: "1px",
     borderColor: "gray",
     width: "200px",
-    height: "auto"
+    height: "auto",
+    backgroundImage: "url( " + picture + " )",
+    backgroundPosition: "center",
+    backgroundSize: "cover"
   };
 
   render() {
@@ -30,10 +34,12 @@ class SearchCurentWeather extends Component {
         <div className="content">
           <h1>{this.props.search.name} current weather:</h1>
           <h3>{this.props.search.weather[0].description}</h3>
+          <h3>{this.props.search.weather[0].icon}</h3>
           <h3> Humidity:{this.props.search.main.humidity}%</h3>
           <h3>
             {" "}
-            Temperature:{Math.round(this.props.search.main.temp - 273)}° C{" "}
+            Temperature:
+            {Math.round(((this.props.search.main.temp - 273) * 9) / 5 + 32)}
           </h3>
           <h3> Windspeed: {this.props.search.wind.speed}mph</h3>
         </div>
