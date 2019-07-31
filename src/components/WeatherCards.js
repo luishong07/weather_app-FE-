@@ -16,35 +16,8 @@ class WeatherCards extends Component {
     backgroundSize: "cover"
   };
 
-  thing = {
-    fontSize: "30px",
-    color: "white"
-  };
-
-  weatherArray = [
-    "fas fa-cloud-showers-heavy",
-    "fas fa-poo-storm",
-    "fas fa-sun",
-    "fas fa-smog"
-  ];
-
-  weatherSymbol = () => {
-    let daWeather = this.props.day.weather[0].description;
-    let weatherSym;
-    if (daWeather.includes("rain")) {
-      weatherSym = "fas fa-cloud-showers-heavy";
-    } else if (daWeather.includes("sun")) {
-      weatherSym = "fas fa-sun";
-    } else if (daWeather.includes("cloud")) {
-      weatherSym = "fas fa-smog";
-    } else {
-      weatherSym = "fas fa-poo-storm";
-    }
-    return weatherSym;
-  };
-
-  getDay = () => {
-    this.props.onClick(this.props.day.dt_txt.substring(0, 10));
+  getDayAndCity = () => {
+    this.props.onClick(this.props.day.dt_txt.substring(0, 10), this.props.city);
   };
 
   getWindDirection = () => {
@@ -102,7 +75,8 @@ class WeatherCards extends Component {
     // }
     //  console.log(this.props.weather.list)
     return (
-      <div className="ui card" style={this.style} onClick={this.getDay}>
+      <div className="ui card" style={this.style} onClick={this.getDayAndCity}>
+        <h2>{this.props.city} </h2>
         <div className="content">
           <h3>{dateSplit}</h3>
           {/* <i style={this.thing} class='fas'>&#xf753;</i> */}

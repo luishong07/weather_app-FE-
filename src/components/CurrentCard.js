@@ -8,7 +8,7 @@ class CurrentCard extends Component {
     borderStyle: "solid",
     borderWidth: "1px",
     borderColor: "gray",
-    width: "200px",
+    width: "300px",
     height: "auto",
     backgroundImage: "url( " + picture + " )",
     backgroundPosition: "center",
