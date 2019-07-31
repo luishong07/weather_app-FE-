@@ -13,6 +13,7 @@ class WeatherCollection extends Component {
   render() {
     // console.log(this.props.current,"plus ultra")
     let fiveDayWeather = this.props.weather;
+    let fullWeather = this.props.fullWeather;
     let searchFiveDayWeather = this.props.searchWeather;
     let user =  this.props.user;
     if (!this.props.weather || !this.props.user) {

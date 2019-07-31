@@ -50,7 +50,6 @@ class MainContainer extends Component {
         this.setState({
           user: result
         })
-        console.log('fuck you!!!!')
       })
 
 
@@ -108,6 +107,7 @@ class MainContainer extends Component {
     )
       .then(resp => resp.json())
       .then(weather => {
+        let city_name = weather.city.name
         let parsedWeather = weather.list.filter(weather =>
           weather.dt_txt.includes("12:00:00")
         );
@@ -204,6 +204,7 @@ class MainContainer extends Component {
                   <WeatherCollection
                     search={this.state.SearchFetch}
                     current={this.state.currentWeather}
+                    fullWeather = {this.state.fiveDayWeather}
                     weather={this.state.fiveDayWeatherParsed}
                     onClick={this.handleClick}
                     searchWeather={this.state.SearchFetch5daysPar}
