@@ -17,7 +17,7 @@ class CitySearch extends Component {
 
   onChange = e => {
     this.setState({
-      [e.target.name]: e.target.value      
+      [e.target.name]: e.target.value
     });
   };
 
@@ -31,7 +31,7 @@ class CitySearch extends Component {
     )
       .then(resp => resp.json())
       .then(result => {
-        // console.log(result, "OVVVVVVVVVv");
+        console.log(result, "OVVVVVVVVVv");
 
         this.props.fetchSomething(result);
       });

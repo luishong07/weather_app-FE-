@@ -8,7 +8,6 @@ import NewsDetail from "../components/NewsDetail";
 import picture from "../images/new.jpeg";
 
 class MainContainer extends Component {
-
   mainDiv = {
     display: "flex"
   };
@@ -34,25 +33,22 @@ class MainContainer extends Component {
     });
   }
 
-
   getUser() {
-    fetch(`http://localhost:3003/users/${localStorage.getItem('id')}`, {
+    fetch(`http://localhost:3001/users/${localStorage.getItem("id")}`, {
       method: "GET",
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     })
       .then(resp => resp.json())
       .then(result => {
-        this.getFiveDayWeather(result)
+        this.getFiveDayWeather(result);
         this.getFiveDayParsed(result);
         this.getCurrentWeather(result);
         this.setState({
           user: result
-        })
-      })
-
-
+        });
+      });
   }
   style = {
     background: "#D7F0F3",
@@ -75,13 +71,14 @@ class MainContainer extends Component {
         this.setState({ NewsArr: result.articles });
       });
     this.getUser();
-    
   }
 
   // All for Hometown API Searches vvv (need to take in user hometown city and country)
-  getFiveDayWeather = (user) => {
+  getFiveDayWeather = user => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${user.hometown_city},${user.hometown_country}&APPID=1178c91249e1986e193e0c736d80df29`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${
+        user.hometown_city
+      },${user.hometown_country}&APPID=1178c91249e1986e193e0c736d80df29`
     )
       .then(resp => resp.json())
       .then(weather => {
@@ -101,13 +98,15 @@ class MainContainer extends Component {
     this.setState({ SearchFetch5daysPar: arg });
   };
 
-  getFiveDayParsed = (user) => {
+  getFiveDayParsed = user => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${user.hometown_city},${user.hometown_country}&APPID=1178c91249e1986e193e0c736d80df29`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${
+        user.hometown_city
+      },${user.hometown_country}&APPID=1178c91249e1986e193e0c736d80df29`
     )
       .then(resp => resp.json())
       .then(weather => {
-        let city_name = weather.city.name
+        let city_name = weather.city.name;
         let parsedWeather = weather.list.filter(weather =>
           weather.dt_txt.includes("12:00:00")
         );
@@ -117,9 +116,11 @@ class MainContainer extends Component {
       });
   };
 
-  getCurrentWeather = (user) => {
+  getCurrentWeather = user => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${user.hometown_city},${user.hometown_country}&APPID=1178c91249e1986e193e0c736d80df29`
+      `https://api.openweathermap.org/data/2.5/weather?q=${
+        user.hometown_city
+      },${user.hometown_country}&APPID=1178c91249e1986e193e0c736d80df29`
     )
       .then(resp => resp.json())
       .then(weather => {
@@ -151,9 +152,7 @@ class MainContainer extends Component {
   };
 
   render() {
-
-    console.log(this.state.user)
-
+    console.log(this.state.user);
 
     return (
       <div style={this.style}>
@@ -204,7 +203,7 @@ class MainContainer extends Component {
                   <WeatherCollection
                     search={this.state.SearchFetch}
                     current={this.state.currentWeather}
-                    fullWeather = {this.state.fiveDayWeather}
+                    fullWeather={this.state.fiveDayWeather}
                     weather={this.state.fiveDayWeatherParsed}
                     onClick={this.handleClick}
                     searchWeather={this.state.SearchFetch5daysPar}

@@ -27,7 +27,7 @@ class CurrentCard extends Component {
     //     return null
     // }
 
-    // console.log(this.props.current)
+    console.log(this.props.current, "asdasdasdas");
 
     return (
       <div
@@ -37,11 +37,22 @@ class CurrentCard extends Component {
         // style={style}
       >
         <div className="content">
+          <h3>
+            <img
+              src={
+                "http://openweathermap.org/img/wn/" +
+                this.props.current.weather[0].icon +
+                "@2x.png"
+              }
+              alt={"logo"}
+            />
+          </h3>
           <h3>{this.props.current.weather[0].description}</h3>
           <h3> Humidity:{this.props.current.main.humidity}%</h3>
           <h3>
             {" "}
-            Temperature:{Math.round(this.props.current.main.temp - 273)}° C{" "}
+            Temperature:
+            {Math.round(((this.props.current.main.temp - 273) * 9) / 5 + 32)}
           </h3>
           <h3> Windspeed: {this.props.current.wind.speed}mph</h3>
         </div>
