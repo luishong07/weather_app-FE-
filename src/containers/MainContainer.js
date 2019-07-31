@@ -36,7 +36,7 @@ class MainContainer extends Component {
 
 
   getUser() {
-    fetch(`http://localhost:3001/users/${localStorage.getItem('id')}`, {
+    fetch(`http://localhost:3003/users/${localStorage.getItem('id')}`, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
