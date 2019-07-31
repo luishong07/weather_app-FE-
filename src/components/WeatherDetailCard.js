@@ -25,6 +25,8 @@ export default class WeatherDetailCard extends React.Component {
       .map(weather => Math.round(weather.main.temp - 273.15))
   };
 
+  
+
   celsiusConverter = () => {
     let allDayWeather = this.props.dayWeather.list.filter(weather =>
       weather.dt_txt.includes(this.props.weatherDetailDate)

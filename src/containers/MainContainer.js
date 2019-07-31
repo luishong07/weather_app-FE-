@@ -20,6 +20,7 @@ class MainContainer extends Component {
     currentWeather: null,
     date: "",
     weatherDetailDate: null,
+    weatherDetailCity: null,
     NewsD: null,
     SearchFetch: null,
     SearchFetch5days: null,
@@ -131,13 +132,19 @@ class MainContainer extends Component {
   // All for Hometown API Searches ^^^
 
   // When a weather card is clicked it changes the weatherDetailDate state and renders the weatherDetailCardComponent
-  handleClick = day => {
-    this.setState({ weatherDetailDate: day });
+  handleClick = (day, city) => {
+    this.setState({
+      weatherDetailDate: day,
+      weatherDetailCity: city
+    });
   };
 
   // When the weather detail card is clicked it changes the weatherDetailDate state and renders the weatherCollection
   handleClick2 = () => {
-    this.setState({ weatherDetailDate: null });
+    this.setState({
+      weatherDetailDate: null,
+      weatherDetailCity: null
+    });
   };
 
   newsClick = artical => {
@@ -153,7 +160,6 @@ class MainContainer extends Component {
   render() {
 
     console.log(this.state.user)
-
 
     return (
       <div style={this.style}>
@@ -194,7 +200,9 @@ class MainContainer extends Component {
                 {this.state.weatherDetailDate ? (
                   <WeatherDetailCard
                     key={this.state.weatherDetailDate}
-                    dayWeather={this.state.fiveDayWeather}
+                    city={this.state.weatherDetailCity}
+                    dayWeather ={this.state.weatherDetailCity === this.state.fiveDayWeather.city.name ? this.state.fiveDayWeather :  this.state.SearchFetch5days }
+                    fullSearchWeather = {this.state.SearchFetch5days}
                     weatherDetailDate={this.state.weatherDetailDate}
                     onClick={this.handleClick2}
                     searchDayWeather={this.state.SearchFetch5days}
@@ -209,6 +217,7 @@ class MainContainer extends Component {
                     onClick={this.handleClick}
                     searchWeather={this.state.SearchFetch5daysPar}
                     user={this.state.user}
+                    fullSearchWeather = {this.state.SearchFetch5days}
                   />
                 )}
               </div>

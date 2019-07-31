@@ -7,7 +7,7 @@ class SearchCurentWeather extends Component {
     borderStyle: "solid",
     borderWidth: "1px",
     borderColor: "gray",
-    width: "200px",
+    width: "300px",
     height: "auto"
   };
 

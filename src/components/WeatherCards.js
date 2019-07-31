@@ -15,8 +15,8 @@ class WeatherCards extends Component {
     backgroundSize: "cover"
   };
 
-  getDay = () => {
-    this.props.onClick(this.props.day.dt_txt.substring(0, 10));
+  getDayAndCity = () => {
+    this.props.onClick(this.props.day.dt_txt.substring(0, 10), this.props.city);
   };
 
   getWindDirection = () => {
@@ -51,8 +51,8 @@ class WeatherCards extends Component {
     }
     //  console.log(this.props.weather.list)
     return (
-      <div className="ui card" style={this.style} onClick={this.getDay}>
-        <h2>Search cards </h2>
+      <div className="ui card" style={this.style} onClick={this.getDayAndCity}>
+        <h2>{this.props.city} </h2>
         <div className="content">
           <h3>{this.props.day.dt_txt.split(" ")[0]}</h3>
           <h3>{this.props.day.weather[0].description}</h3>
