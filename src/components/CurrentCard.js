@@ -37,6 +37,7 @@ class CurrentCard extends Component {
         // style={style}
       >
         <div className="content">
+          <h1>{this.props.current.name} current weather:</h1>
           <h3>
             <img
               src={

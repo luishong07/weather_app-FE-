@@ -25,7 +25,9 @@ export default class WeatherDetailCard extends React.Component {
       .map(weather => Math.round(weather.main.temp - 273.15))
   };
 
-  
+  componentDidMount() {
+    window.scrollTo(0, 230);
+  }
 
   celsiusConverter = () => {
     let allDayWeather = this.props.dayWeather.list.filter(weather =>
@@ -48,6 +50,8 @@ export default class WeatherDetailCard extends React.Component {
   };
 
   render() {
+    this.componentDidMount();
+
     let allDayWeather = this.props.dayWeather.list.filter(weather =>
       weather.dt_txt.includes(this.props.weatherDetailDate)
     );
